@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace server.Controllers {
-    [Route ("")]
+    public class PostController : BaseController {
     [Route ("api/")]
     [Route ("api/[controller]")]
     public class PostController : Controller {
