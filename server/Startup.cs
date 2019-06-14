@@ -25,6 +25,16 @@ namespace server {
             app.UseMvc ();
             app.UseMvc (routes => {
                 routes.MapRoute ("defaults", "{controller=post}/{action=Index}");
+                // routes.MapRoute(
+                //     name: "default",
+                //     template: "{controller=Home}/{action=Index}/{id?}"
+                // );
+
+                // routes.MapRoute(
+                //     name: "default ",
+                //     template: "{controller}/{action}/{id?}",
+                //     defaults: new { controller = "Home", action = "Index" }
+                // );
 
             });
         }
