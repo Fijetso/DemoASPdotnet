@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace server.Controllers {
-    // [Route("api/[controller]")]
+    [Route ("")]
+    [Route ("api/")]
+    [Route ("api/[controller]")]
     public class PostController : Controller {
         [HttpGet]
         public ActionResult<string> index () {
