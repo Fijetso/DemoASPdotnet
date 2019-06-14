@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using server.DataAccesses.Base;
 
 namespace server {
     public class Startup {
@@ -20,6 +21,8 @@ namespace server {
         public void Configure (IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
+                RealmDatabase.Config.ShouldDeleteIfMigrationNeeded = true;
+
             }
 
             app.UseMvc ();
