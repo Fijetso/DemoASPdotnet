@@ -23,7 +23,7 @@ namespace server.Controllers {
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<List<Post>> getAll () => PostBusiness.List.ToList ();
+        public ActionResult<List<PostResponse>> getAll () => PostResponse.List (PostBusiness.List);
 
         /// <summary>
         /// Get Post By I
@@ -41,9 +41,9 @@ namespace server.Controllers {
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<Post>> add ([FromBody] Post post) {
-            post = await PostBusiness.Add (post);
-            return CreatedAtAction (nameof (Post), post);
+        public async Task<ActionResult<PostResponse>> add ([FromBody] PostRequest post) {
+            var newPost = await PostBusiness.Add ((Post) post);
+            return CreatedAtAction (nameof (add), (PostResponse) newPost);
         }
     }
 }

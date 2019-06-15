@@ -9,6 +9,7 @@ namespace server.DataTransfers {
         }
         public void MappingPost () {
             CreateMap<Post, PostResponse> ();
+            CreateMap<PostRequest, Post> ();
         }
     }
 }

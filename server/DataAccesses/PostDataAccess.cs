@@ -12,6 +12,5 @@ namespace server.DataAccesses {
             });
             return post;
         }
-
     }
 }
