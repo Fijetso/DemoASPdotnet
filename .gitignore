@@ -354,3 +354,4 @@ Tools/
 
 # Ignore Realm Database File
 FodyWeavers.xsd
+server/Database
