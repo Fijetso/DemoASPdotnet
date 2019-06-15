@@ -25,12 +25,12 @@ namespace server.Controllers {
         /// <param name="id">Post ID</param>
         /// <returns></returns>
         [HttpGet ("{int:id}")]
-        public ActionResult<Post> GetById (int id) {
+        public IActionResult GetById (int id) {
             Post foundPost = realm.Find<Post> (id);
             if (foundPost == null) {
-                return null;
+                return NotFound ();
             }
-            return foundPost;
+            return Ok ();
         }
         /// <summary>
         /// Add new Post

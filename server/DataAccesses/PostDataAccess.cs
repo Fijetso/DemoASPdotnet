@@ -4,7 +4,7 @@ using server.DataAccesses.Base;
 using server.Models;
 
 namespace server.DataAccesses {
-    public class PostDataAccesses : RealmDatabase {
+    public class PostDataAccess : RealmDatabase {
         private static int NextId => List.Count () == 0 ?
             1 : List.AsEnumerable ().Max (i => i.Id) + 1;
 
