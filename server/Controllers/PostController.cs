@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using Realms;
 using server.Businesses;
+using server.DataTransfers.PostDataTransfers;
 using server.Models;
 
 namespace server.Controllers {
@@ -23,20 +24,18 @@ namespace server.Controllers {
         /// <returns></returns>
         [HttpGet]
         public ActionResult<List<Post>> getAll () => PostBusiness.List.ToList ();
+
         /// <summary>
         /// Get Post By I
         /// </summary>
         /// <param name="id">Post ID</param>
         /// <returns></returns>
-        [HttpGet ("{int:id}")]
-        public ActionResult<Post> GetById (int id) => PostBusiness.Get (id);
-        // {
-        //     Post foundPost = realm.Find<Post> (id);
-        //     if (foundPost == null) {
-        //         return NotFound ();
-        //     }
-        //     return Ok ();
-        // }
+        [HttpGet ("{id:int}")]
+        [ProducesResponseType (StatusCodes.Status200OK)]
+        [ProducesResponseType (typeof (string), StatusCodes.Status404NotFound)]
+        public ActionResult<PostResponse> Item (int id) =>
+            (PostResponse) PostBusiness.Get (id);
+
         /// <summary>
         /// Add new Post
         /// </summary>
@@ -46,15 +45,5 @@ namespace server.Controllers {
             post = await PostBusiness.Add (post);
             return CreatedAtAction (nameof (Post), post);
         }
-        // {
-        //     Post p = new Post () {
-        //         Id = nextId,
-        //         Title = "My title",
-        //         Content = "My content",
-        //         Created = new DateTimeOffset ()
-        //     };
-        //     await realm.WriteAsync (r => p = r.Add (p));
-        //     return p;
-        // }
     }
 }
